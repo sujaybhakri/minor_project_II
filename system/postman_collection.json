@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "fitconnect-collection",
+		"name": "FitConnect API",
+		"description": "API collection for FitConnect Fitness Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/users"
+					}
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/users/1"
+					}
+				},
+				{
+					"name": "Get User by Email",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/users/email/john@example.com"
+					}
+				},
+				{
+					"name": "Get Users by Role",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/users/role/MEMBER"
+					}
+				},
+				{
+					"name": "Get All Trainers",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/users/trainers"
+					}
+				},
+				{
+					"name": "Get All Members",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/users/members"
+					}
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/api/users",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New User\",\n    \"email\": \"newuser@example.com\",\n    \"password\": \"password123\",\n    \"roleId\": 3\n}"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Memberships",
+			"item": [
+				{
+					"name": "Get All Memberships",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/memberships"
+					}
+				},
+				{
+					"name": "Get Membership by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/memberships/1"
+					}
+				},
+				{
+					"name": "Get Memberships by User ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/memberships/user/1"
+					}
+				},
+				{
+					"name": "Get Active Membership by User ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/memberships/user/1/active"
+					}
+				},
+				{
+					"name": "Create Membership",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/api/memberships",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"planId\": 1,\n    \"startDate\": \"2024-03-20\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Membership",
+					"request": {
+						"method": "PUT",
+						"url": "{{base_url}}/api/memberships/1",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"planId\": 2,\n    \"startDate\": \"2024-03-20\",\n    \"endDate\": \"2024-04-20\",\n    \"isActive\": true\n}"
+						}
+					}
+				},
+				{
+					"name": "Deactivate Membership",
+					"request": {
+						"method": "PUT",
+						"url": "{{base_url}}/api/memberships/1/deactivate"
+					}
+				},
+				{
+					"name": "Get Expired Memberships",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/memberships/expired"
+					}
+				}
+			]
+		},
+		{
+			"name": "Membership Plans",
+			"item": [
+				{
+					"name": "Get All Membership Plans",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/membership-plans"
+					}
+				},
+				{
+					"name": "Get Membership Plan by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/membership-plans/1"
+					}
+				},
+				{
+					"name": "Create Membership Plan",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/api/membership-plans",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Premium Plus\",\n    \"price\": 99.99,\n    \"durationDays\": 30,\n    \"description\": \"Premium membership with additional benefits\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Membership Plan",
+					"request": {
+						"method": "PUT",
+						"url": "{{base_url}}/api/membership-plans/1",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Plan\",\n    \"price\": 89.99,\n    \"durationDays\": 30,\n    \"description\": \"Updated plan description\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Membership Plan",
+					"request": {
+						"method": "DELETE",
+						"url": "{{base_url}}/api/membership-plans/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "Session Bookings",
+			"item": [
+				{
+					"name": "Get All Session Bookings",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/session-bookings"
+					}
+				},
+				{
+					"name": "Get Session Booking by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/session-bookings/1"
+					}
+				},
+				{
+					"name": "Get Session Bookings by Member",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/session-bookings/member/1"
+					}
+				},
+				{
+					"name": "Get Session Bookings by Trainer",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/session-bookings/trainer/1"
+					}
+				},
+				{
+					"name": "Get Session Bookings by Status",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/session-bookings/status/CONFIRMED"
+					}
+				},
+				{
+					"name": "Create Session Booking",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/api/session-bookings",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"member\": {\n        \"id\": 1\n    },\n    \"trainer\": {\n        \"id\": 2\n    },\n    \"sessionDate\": \"2024-03-20\",\n    \"startTime\": \"10:00:00\",\n    \"endTime\": \"11:00:00\",\n    \"status\": \"PENDING\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Session Booking",
+					"request": {
+						"method": "PUT",
+						"url": "{{base_url}}/api/session-bookings/1",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sessionDate\": \"2024-03-21\",\n    \"startTime\": \"14:00:00\",\n    \"endTime\": \"15:00:00\",\n    \"status\": \"CONFIRMED\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Booking Status",
+					"request": {
+						"method": "PUT",
+						"url": "{{base_url}}/api/session-bookings/1/status?status=CONFIRMED"
+					}
+				},
+				{
+					"name": "Delete Session Booking",
+					"request": {
+						"method": "DELETE",
+						"url": "{{base_url}}/api/session-bookings/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "Workout Programs",
+			"item": [
+				{
+					"name": "Get All Workout Programs",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/workout-programs"
+					}
+				},
+				{
+					"name": "Get Workout Program by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/workout-programs/1"
+					}
+				},
+				{
+					"name": "Get Workout Programs by Trainer",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/workout-programs/trainer/1"
+					}
+				},
+				{
+					"name": "Get Workout Programs by Member",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/api/workout-programs/member/1"
+					}
+				},
+				{
+					"name": "Create Workout Program",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/api/workout-programs",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trainer\": {\n        \"id\": 2\n    },\n    \"member\": {\n        \"id\": 1\n    },\n    \"title\": \"Beginner Fitness Plan\",\n    \"description\": \"A comprehensive plan for beginners focusing on basic exercises and proper form\"\n}"
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		}
+	]
+} 
